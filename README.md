@@ -1,4 +1,4 @@
-# pizza_order_system
+# Pizza Order System
 A web application allowing users to add new customers, update the information of the existing customers, customize and order a pizza, view order history,  and delete an existing order.
 
 ![截屏2024-05-11 上午9 50 36](https://github.com/Luna-Jia/pizza_order_system/assets/73403516/2614c8f2-c344-4d7d-9068-7c79e08b56c7)
