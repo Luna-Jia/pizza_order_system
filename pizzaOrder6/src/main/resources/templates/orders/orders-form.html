@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Order History</title>
+
+    <style>
+        .container {
+                margin-top: 25px;
+                margin-left: 25px;
+            }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h2>Order History</h2>
+    <hr>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Order ID</th>
+
+
+            <th>Pizza Information</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+        <tr th:each="tempOrder : ${orders}">
+            <td th:text="${tempOrder.id}"></td>
+            <td>
+                <ul>
+                    <li th:each="pizza : ${tempOrder.pizzas}">
+                        <span th:text="${pizza.size}"></span> - <span th:text="${pizza.topping}"></span>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <a th:href="@{/orders/details(id=${tempOrder.id})}"
+                   class="btn btn-info btn-sm">
+                    View Details
+                </a>
+
+                <!-- Add "delete" button/link-->
+                <a th:href="@{/orders/delete(orderId=${tempOrder.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if(!(confirm('Are you sure you want to delete this order?'))) return false">
+                    Delete Order
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <a th:href="@{/pizzas/listPizza}" class="btn btn-info btn-sm">Back to Pizza List</a>
+    <a th:href="@{/customers/list}" class="btn btn-info btn-sm">Back to Customer List</a>
+</div>
+</body>
+</html>

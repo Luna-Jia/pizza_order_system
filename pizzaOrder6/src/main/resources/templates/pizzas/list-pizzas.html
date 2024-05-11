@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <title>Pizza List</title>
+  <style>
+    .container {
+            margin-top: 25px;
+            margin-left: 25px;
+        }
+
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <h3>Pizza List</h3>
+  <hr>
+
+  <!-- Add a button -->
+  <a th:href="@{/pizzas/addPizzaForm}"
+     class="btn btn-primary btn-sm mb-3">
+    Add Pizza
+  </a>
+
+  <a th:href="@{/customers/list}" class="btn btn btn-primary btn-sm mb-3">Back to Customer List</a>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>Size</th>
+      <th>Toppings</th>
+      <th>Action</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="tempPizza : ${pizzas}">
+
+      <td th:text="${tempPizza.size}" />
+      <td th:text="${tempPizza.topping}" />
+
+      <!-- Add update button Link-->
+      <td>
+        <a th:href="@{/pizzas/updatePizzaForm(pizzaId=${tempPizza.id})}"
+           class="btn btn-info btn-sm">
+          Update
+        </a>
+
+        <!-- Add "delete" button/link-->
+        <a th:href="@{/pizzas/deletePizza(pizzaId=${tempPizza.id})}"
+           class="btn btn-danger btn-sm"
+           onclick="if(!(confirm('Are you sure you want to delete this pizza?'))) return false">
+          Delete
+        </a>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

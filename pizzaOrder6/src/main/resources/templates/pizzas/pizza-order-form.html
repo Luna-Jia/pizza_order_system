@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>Order Pizza</title>
+  <style>
+    .container {
+            margin-top: 25px;
+            margin-left: 25px;
+        }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Order Pizza</h2>
+
+  <form action="#" th:action="@{/pizzas/savePizza}" th:object="${pizza}" method="POST">
+
+    <!-- Add hidden form field to handle the update-->
+
+    <input type="hidden" th:field="*{id}">
+
+    <!-- Add input field for orderId parameter -->
+    <!--
+    <input type="hidden" th:field="*{order_id}" th:value="${order_id}" />
+     -->
+
+    <!-- Add form fields for pizza order information -->
+
+    <!-- Size -->
+    <hr>
+    <!-- haha -->
+    <p class="fw-bold">Pick the size: </p>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="size" id="small" value="small" th:field="*{size}">
+      <label class="form-check-label" for="small">Small</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="size" id="medium" value="medium" th:field="*{size}">
+      <label class="form-check-label" for="medium">Medium</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="size" id="large" value="large" th:field="*{size}">
+      <label class="form-check-label" for="large">Large</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="size" id="party" value="party" th:field="*{size}">
+      <label class="form-check-label" for="party">Party</label>
+    </div>
+
+    <hr>
+
+
+    <!-- haha -->
+    <!-- Toppings -->
+
+    <p class="fw-bold">Select toppings: </p>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="pepperoni" value="pepperoni" th:field="*{topping}">
+      <label class="form-check-label" for="pepperoni">Pepperoni</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="mushroom" value="mushroom" th:field="*{topping}">
+      <label class="form-check-label" for="mushroom">Mushroom</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="sausage" value="sausage" th:field="*{topping}">
+      <label class="form-check-label" for="sausage">Sausage</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="bacon" value="bacon" th:field="*{topping}">
+      <label class="form-check-label" for="bacon">Bacon</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="extra_cheese" value="extra_cheese" th:field="*{topping}">
+      <label class="form-check-label" for="extra_cheese">Extra Cheese</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="black_olives" value="black_olives" th:field="*{topping}">
+      <label class="form-check-label" for="black_olives">Black Olive</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="green_peppers" value="green_peppers" th:field="*{topping}">
+      <label class="form-check-label" for="green_peppers">Green Pepper</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="pineapple" value="pineapple" th:field="*{topping}">
+      <label class="form-check-label" for="pineapple">Pineapple</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="spinach" value="spinach" th:field="*{topping}">
+      <label class="form-check-label" for="spinach">Spinach</label>
+    </div>
+
+    <button type="submit" class="btn btn-info col-2">Save</button>
+
+  </form>
+
+  <hr>
+  <a th:href="@{/pizzas/listPizza}" class="btn btn-info btn-sm">Back to Pizza List</a>
+
+  <a th:href="@{/customers/list}" class="btn btn-info btn-sm">Back to Customer List</a>
+
+</div>
+</body>
+</html>
